@@ -4,14 +4,23 @@
 - Generate Password
 - Save Password 
 - Offline App
+- Passwords are stored on your system and no one has access to them
+
 # Install
-Install the required libraries with the following commands :
+Run Installer Password Manager.exe
 
-`pip install PyQt5` 
+- step 1 :
+ extract files (Do not change the installation location)
+- step 2 :
+ Install fonts in the (Install Font) folder on the desktop
+- step 3 :
+Run App :)
 
-`pip install PyQt5-tools`
-
-# About
+# Changelog
+- v 1.01 :
+  - Minor bug fixes
+  - Add Switch Dark and Light Button in Home page
+# About Me
 Full name : Abbas Ataei
 
 Learning : Python
