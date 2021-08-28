@@ -82,14 +82,6 @@ class Panel(QMainWindow):
         self.panelUi.about5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.five))
         self.panelUi.about6.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.five))
 
-        # Privacy Policy
-        self.panelUi.privacy1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six))
-        self.panelUi.privacy2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six))
-        self.panelUi.privacy3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six))
-        self.panelUi.privacy4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six))
-        self.panelUi.privacy5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six))
-        self.panelUi.privacy6.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six))
-
         # Logout
         self.panelUi.logout1.clicked.connect(self.logout)
         self.panelUi.logout2.clicked.connect(self.logout)
@@ -167,14 +159,6 @@ class Panel(QMainWindow):
         self.panelUi.about5_dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.fivedr))
         self.panelUi.about6_dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.fivedr))
 
-        # Privacy Policy
-        self.panelUi.priv1dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six_dr))
-        self.panelUi.priv2dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six_dr))
-        self.panelUi.priv3dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six_dr))
-        self.panelUi.priv4dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six_dr))
-        self.panelUi.priv5dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six_dr))
-        self.panelUi.priv6dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.six_dr))
-
         # Logout
         self.panelUi.logout1dr.clicked.connect(self.logoutdr)
         self.panelUi.logout2dr.clicked.connect(self.logoutdr)
@@ -219,6 +203,20 @@ class Panel(QMainWindow):
         self.panelUi.githubdr.clicked.connect(self.github)
         self.panelUi.contact_dr.clicked.connect(self.contact)
         self.panelUi.social_dr.clicked.connect(self.social)
+
+        # Light Mode Button top
+        self.panelUi.mode_light1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.one))
+        self.panelUi.mode_light2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.two))
+        self.panelUi.mode_light3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.three))
+        self.panelUi.mode_light4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_2))
+        self.panelUi.mode_light5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.five))
+
+        # Dark Mode Button top
+        self.panelUi.mode_dark1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.onedr))
+        self.panelUi.mode_dark2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.twodr))
+        self.panelUi.mode_dark3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.th3dr))
+        self.panelUi.mode_dark4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_dr))
+        self.panelUi.mode_dark5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.fivedr))
 
     def mousePressEvent(self, evt):
         self.oldPos = evt.globalPos()

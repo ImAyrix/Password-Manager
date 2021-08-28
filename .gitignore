@@ -1,3 +1,4 @@
 .idea/
 auto-py-to-exe/
 *.ui
+__pycache__/
