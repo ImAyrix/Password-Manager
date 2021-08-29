@@ -17,6 +17,8 @@ Run Installer Password Manager.exe
 Run App :)
 
 # Changelog
+- v 1.0.2 :
+  - Minor bug fixes Installer Password Manager
 - v 1.01 :
   - Minor bug fixes
   - Add Switch Dark and Light Button in Home page
