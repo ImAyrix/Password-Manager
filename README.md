@@ -17,13 +17,16 @@ Run Installer Password Manager.exe
 Run App :)
 
 # Changelog
-- v 1.0.3 :
+- v 1.0.3 
+
 improved dark mode :
   - Automatic mode change compared to operating system mode (Dark/Light mode)
   - Change mode with custom clock (Dark/Light mode)
 - v 1.0.2 :
+
   - Minor bug fixes Installer Password Manager
 - v 1.01 :
+
   - Minor bug fixes
   - Add Switch Dark and Light Button in Home page
 # About Me
