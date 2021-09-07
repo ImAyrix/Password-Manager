@@ -8,6 +8,11 @@ import csv
 import random
 import os
 import webbrowser
+import darkdetect
+from PyQt5 import QtGui
+from PyQt5 import QtCore
+from datetime import datetime
+from PyQt5.QtWidgets import QMessageBox
 
 user = str()
 password_account = str()
@@ -24,6 +29,54 @@ class Panel(QMainWindow):
 
         if check_dark == 1:
             self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.onedr)
+
+        with open('system mode.text', 'r') as sm:
+            for row in sm:
+                if row == 'True':
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.system_df.setIcon(icon)
+                    self.panelUi.system_df.setIconSize(QtCore.QSize(20, 20))
+
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.system_df_dr.setIcon(icon)
+                    self.panelUi.system_df_dr.setIconSize(QtCore.QSize(20, 20))
+                else:
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.system_df.setIcon(icon)
+                    self.panelUi.system_df.setIconSize(QtCore.QSize(0, 0))
+
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.system_df_dr.setIcon(icon)
+                    self.panelUi.system_df_dr.setIconSize(QtCore.QSize(0, 0))
+
+        with open('custom.text', 'r') as sm:
+            for row in sm:
+                if row == 'True':
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.custom_md.setIcon(icon)
+                    self.panelUi.custom_md.setIconSize(QtCore.QSize(20, 20))
+
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.custom_md_dr.setIcon(icon)
+                    self.panelUi.custom_md_dr.setIconSize(QtCore.QSize(20, 20))
+                else:
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.custom_md.setIcon(icon)
+                    self.panelUi.custom_md.setIconSize(QtCore.QSize(0, 0))
+
+                    icon = QtGui.QIcon()
+                    icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    self.panelUi.custom_md_dr.setIcon(icon)
+                    self.panelUi.custom_md_dr.setIconSize(QtCore.QSize(0, 0))
+
+
         # generate
         self.panelUi.generate1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.one))
         self.panelUi.generate2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.one))
@@ -96,10 +149,6 @@ class Panel(QMainWindow):
         self.panelUi.Button_sub_dr.clicked.connect(self.submitdr)
         self.panelUi.pushButton_generate_dr.clicked.connect(self.generatedr)
         self.panelUi.pushButton_copy_dark.clicked.connect(self.copy_pass_dr)
-
-        # Dark
-        self.panelUi.Dark.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_dr))
-        self.panelUi.light_dark.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_2))
 
         # generate
         self.panelUi.gener1_dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.onedr))
@@ -204,19 +253,30 @@ class Panel(QMainWindow):
         self.panelUi.contact_dr.clicked.connect(self.contact)
         self.panelUi.social_dr.clicked.connect(self.social)
 
-        # Light Mode Button top
-        self.panelUi.mode_light1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.one))
-        self.panelUi.mode_light2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.two))
-        self.panelUi.mode_light3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.three))
-        self.panelUi.mode_light4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_2))
-        self.panelUi.mode_light5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.five))
+        # Dark
+        self.panelUi.mode_dr1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.onedr))
+        self.panelUi.mode_dr2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.twodr))
+        self.panelUi.mode_dr3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.th3dr))
+        self.panelUi.mode_dr4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_dr))
+        self.panelUi.mode_dr5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.fivedr))
 
-        # Dark Mode Button top
-        self.panelUi.mode_dark1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.onedr))
-        self.panelUi.mode_dark2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.twodr))
-        self.panelUi.mode_dark3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.th3dr))
-        self.panelUi.mode_dark4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_dr))
-        self.panelUi.mode_dark5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.fivedr))
+        # Light
+        self.panelUi.mode_lig1.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.one))
+        self.panelUi.mode_lig2.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.two))
+        self.panelUi.mode_lig3.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.three))
+        self.panelUi.mode_lig4.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_2))
+        self.panelUi.mode_lig5.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.five))
+
+        # Auto theme
+        self.panelUi.system_df.clicked.connect(self.system_df)
+        self.panelUi.custom_md.clicked.connect(self.custom_md)
+        self.panelUi.sub_custom.clicked.connect(self.sub_md)
+        self.panelUi.system_df_dr.clicked.connect(self.system_df_dr)
+        self.panelUi.custom_md_dr.clicked.connect(self.custom_md_dr)
+        self.panelUi.sub_custom_2.clicked.connect(self.sub_md_dr)
+
+        self.panelUi.ok_dr.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_dr))
+        self.panelUi.ok_error.clicked.connect(lambda: self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.for_2))
 
     def mousePressEvent(self, evt):
         self.oldPos = evt.globalPos()
@@ -562,6 +622,126 @@ class Panel(QMainWindow):
     def social(self):
         webbrowser.open('https://bioly.io/AbbasAtaei')
 
+    def system_df(self):
+        check = str()
+        with open('system mode.text', 'r') as sm:
+            for row in sm:
+                check = row
+
+        with open('system mode.text', 'w') as sm:
+            if check == 'False':
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.panelUi.system_df.setIcon(icon)
+                self.panelUi.system_df.setIconSize(QtCore.QSize(20, 20))
+                sm.write('True')
+
+                with open('custom.text', 'w') as ct:
+                    ct.write('False')
+
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.panelUi.custom_md.setIcon(icon)
+                self.panelUi.custom_md.setIconSize(QtCore.QSize(0, 0))
+            else:
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.panelUi.system_df.setIcon(icon)
+                self.panelUi.system_df.setIconSize(QtCore.QSize(0, 0))
+                sm.write('False')
+        self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.error_auto)
+
+    def custom_md(self):
+        self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.custom)
+
+    def sub_md(self):
+        light1 = self.panelUi.time_light1.text()
+        light2 = self.panelUi.time_light2.text()
+
+        dark1 = self.panelUi.time_dark1.text()
+        dark2 = self.panelUi.time_dark2.text()
+
+        with open('custom.text', 'w') as cm:
+            cm.write('True')
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.panelUi.custom_md.setIcon(icon)
+        self.panelUi.custom_md.setIconSize(QtCore.QSize(20, 20))
+
+        with open('system mode.text', 'w') as sm:
+            sm.write('False')
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("True.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.panelUi.system_df.setIcon(icon)
+        self.panelUi.system_df.setIconSize(QtCore.QSize(0, 0))
+
+        with open('time.text', 'w') as tt:
+            tt.write(light1 + ',' + light2 + ',' + dark1 + ',' + dark2)
+
+        self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.error_auto)
+
+    def custom_md_dr(self):
+        self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.custom_dr)
+
+    def sub_md_dr(self):
+        light1 = self.panelUi.time_light1_dr.text()
+        light2 = self.panelUi.time_light2_dr.text()
+
+        dark1 = self.panelUi.time_dark1_dr.text()
+        dark2 = self.panelUi.time_dark2_dr.text()
+
+        with open('custom.text', 'w') as cm:
+            cm.write('True')
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.panelUi.custom_md_dr.setIcon(icon)
+        self.panelUi.custom_md_dr.setIconSize(QtCore.QSize(20, 20))
+
+        with open('system mode.text', 'w') as sm:
+            sm.write('False')
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.panelUi.system_df_dr.setIcon(icon)
+        self.panelUi.system_df_dr.setIconSize(QtCore.QSize(0, 0))
+
+        with open('time.text', 'w') as tt:
+            tt.write(light1+','+light2+','+dark1+','+dark2)
+
+        self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.error_dr)
+
+    def system_df_dr(self):
+        check = str()
+        with open('system mode.text', 'r') as sm:
+            for row in sm:
+                check = row
+
+        with open('system mode.text', 'w') as sm:
+            if check == 'False':
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.panelUi.system_df_dr.setIcon(icon)
+                self.panelUi.system_df_dr.setIconSize(QtCore.QSize(20, 20))
+                sm.write('True')
+
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.panelUi.custom_md_dr.setIcon(icon)
+                self.panelUi.custom_md_dr.setIconSize(QtCore.QSize(0, 0))
+
+                with open('custom.text', 'w') as ct:
+                    ct.write('False')
+            else:
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("True_dr.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.panelUi.system_df_dr.setIcon(icon)
+                self.panelUi.system_df_dr.setIconSize(QtCore.QSize(0, 0))
+                sm.write('False')
+        self.panelUi.stackedWidget.setCurrentWidget(self.panelUi.error_dr)
+
 
 class Root(QMainWindow):
 
@@ -573,6 +753,38 @@ class Root(QMainWindow):
 
         if check_dark == 1:
             self.ui.stackedWidget.setCurrentWidget(self.ui.logsig_dr)
+
+        with open('system mode.text', 'r') as sm:
+            for row in sm:
+                if row == 'True':
+                    if darkdetect.isDark():
+                        self.ui.stackedWidget.setCurrentWidget(self.ui.logsig_dr)
+
+                    if darkdetect.isLight():
+                        self.ui.stackedWidget.setCurrentWidget(self.ui.logorsig)
+
+        with open('custom.text', 'r') as cm:
+            for row in cm:
+                if row == 'True':
+                    with open('time.text') as time:
+                        for one in time:
+                            one = one.split(',')
+                            light_first = int(one[0][:2])
+                            light_last = int(one[1][:2])
+                            dark_first = int(one[2][:2])
+                            dark_last = int(one[3][:2])
+                            now = datetime.now().time()
+                            now = int(str(now)[:2])
+                            if now == 0 or now == 00:
+                                now = 24
+
+                            if now <= light_last and now >= light_first:
+                                self.ui.stackedWidget.setCurrentWidget(self.ui.logorsig)
+
+                            elif now <= dark_last and now >= dark_first:
+                                self.ui.stackedWidget.setCurrentWidget(self.ui.logsig_dr)
+                            else:
+                                self.ui.stackedWidget.setCurrentWidget(self.ui.logorsig)
 
         self.ui.lineEdit_user.setPlaceholderText("Username")
         self.ui.lineEdit_pass.setPlaceholderText("Password")
