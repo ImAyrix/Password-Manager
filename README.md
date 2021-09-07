@@ -19,9 +19,9 @@ Run App :)
 # Changelog
 - v 1.0.3 
 
-improved dark mode :
-  - Automatic mode change compared to operating system mode (Dark/Light mode)
-  - Change mode with custom clock (Dark/Light mode)
+  - improved dark mode :
+   - Automatic mode change compared to operating system mode (Dark/Light mode)
+   - Change mode with custom clock (Dark/Light mode)
 - v 1.0.2 :
 
   - Minor bug fixes Installer Password Manager
