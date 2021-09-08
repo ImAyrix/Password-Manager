@@ -28,7 +28,7 @@ Run App :)
 - v 1.01 :
 
   - Minor bug fixes
-  - Add Switch Dark and Light Button in Home page
+  - Added Switch Dark and Light Button in Home page
 # About Me
 Full name : Abbas Ataei
 
